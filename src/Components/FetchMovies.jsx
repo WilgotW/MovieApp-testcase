@@ -8,6 +8,11 @@ export default async function FetchMovies(movieInformation) {
                 .then(res=>res.clone().json());
             return respone;
         }
+        case "config": {
+            const respone = await fetch("https://api.themoviedb.org/3/configuration?api_key=d3967aacd6e3ef518c42a75acde3d777")
+                .then(res=>res.clone().json());
+            return respone;
+        }
         default: {
             alert("Error");
             return null;

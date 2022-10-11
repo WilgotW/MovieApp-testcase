@@ -1,5 +1,6 @@
 import React from 'react'
 
-export default function GenerateImage({path, size}) {
-    return ("http://image.tmdb.org/t/p/" + size + path);
+export default function GenerateImage({baseUrl, size, path}) {
+    console.log(size)
+    return (baseUrl + size + path);
 }

@@ -2,7 +2,14 @@
   text-align: center;
 }
 
-.discover-grid{
+.discover-grids{
+  width: fit-content;
+  gap: 1rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+}
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
