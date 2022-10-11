@@ -7,7 +7,7 @@ export default function Movie({movie, imageConfig}) {
     <div style={{width: "fit-content"}}>
       <div style={{position:"absolute", display: "flex", alignItems: "center", height: "100%"}}>
 
-        <div style={{color: "white"}}>{movie.title}</div>
+        {/* <div style={{color: "white"}}>{movie.title}</div> */}
       </div>
       {/* <p>popularity: {movie.popularity}</p>
       <p>release date: {movie.release_date}</p> */}
