@@ -31,8 +31,6 @@ function App() {
     fetchImageConfig()
   }, [])
   
-  
-
   return (
     <div className="App">
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>

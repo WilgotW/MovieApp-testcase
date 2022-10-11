@@ -13,3 +13,11 @@
   justify-content: center;
   align-items: center;
 }
+.movie-poster{
+  transition: all .2s ease-in-out;
+}
+.movie-poster:hover{
+  transform: scale(1.1);
+  filter: brightness(0.5);
+  cursor: pointer;
+}
