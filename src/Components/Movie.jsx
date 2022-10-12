@@ -6,11 +6,6 @@ export default function Movie({movie, imageConfig}) {
   const [isHovering, setIsHovering] = useState(false);
   return (
     <div style={{width: "fit-content"}} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-      {/* <div style={{position:"absolute", display: "flex", alignItems: "center", height: "100%"}}>
-        
-      </div> */}
-      {/* <p>popularity: {movie.popularity}</p>
-      <p>release date: {movie.release_date}</p> */}
       <div style={{
         position: "relative",
         textAlign: "center",
