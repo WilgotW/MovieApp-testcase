@@ -34,6 +34,7 @@ function App() {
     <div className="App" style={{display: "flex"}}>
       <LeftSideBar />
       <div>
+        
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchMovies={searchMovies}/>
         <DiscoverPage movieInformation={movieInformation} setActiveFilter={setActiveFilter}/>
       </div>

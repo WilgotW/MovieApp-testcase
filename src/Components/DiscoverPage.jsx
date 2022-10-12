@@ -4,12 +4,16 @@ import Movie from './Movie'
 
 export default function DiscoverPage({movieInformation, setActiveFilter}) {
   return (
-    <div style={{width: "100%"}}>
-      <div style={{width: "100%", display: "flex", color: "white", justifyContent: "left"}}>
-        <h1 style={{marginLeft: "40px", marginBottom: "30px"}}>Discover</h1>
+    <div style={{width: "100%", position: "absolute", display: "flex", flexDirection: "column", justifyContent: "center"}}>
+      {/* <div style={{width: "100%", paddingLeft: "400px"}}></div> */}
+      <div style={{display: "flex", flexDirection: "column", justifyContent: "left", paddingLeft: "350px"}}>
+        <h1 style={{color: "white", width: "0"}}>Discover</h1>
+        <div>
+          <FilterCollection setActiveFilter={setActiveFilter}/>
+        </div>
       </div>
-
-      <FilterCollection setActiveFilter={setActiveFilter}/>
+      
+      
       
       <div className='center'>
         <div className='discover-grids'>

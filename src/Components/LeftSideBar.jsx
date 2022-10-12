@@ -8,7 +8,7 @@ export default function LeftSideBar() {
         float: "left",
         width: "300px",
         background: "#171717",
-        position: "relative",
+        position: "absolute",
         height: "100%",
         color: "white"
     }}>

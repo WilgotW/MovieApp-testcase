@@ -16,7 +16,7 @@ export default function FilterCollection({setActiveFilter}) {
       setActiveFilter(filter);
     }
   return (
-    <div style={{display: "flex", justifyContent: "left", gap: "20px", marginLeft: "40px", marginBottom: "100px"}}>
+    <div style={{display: "flex", justifyContent: "left", gap: "20px", marginBottom: "100px"}}>
       {genres.map(genre => <FilterButton key={genre.id} name={genre.name} setFilter={setFilter}/>)}
     </div>
   )
