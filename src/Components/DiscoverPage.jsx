@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import FilterCollection from './FilterCollection'
 import Movie from './Movie'
 
-export default function DiscoverPage({movieInformation}) {
+export default function DiscoverPage({movieInformation, setActiveFilter}) {
   return (
     <div style={{width: "100%"}}>
       <div style={{width: "100%", display: "flex", color: "white", justifyContent: "left"}}>
         <h1 style={{marginLeft: "40px", marginBottom: "30px"}}>Discover</h1>
       </div>
 
-      <FilterCollection />
+      <FilterCollection setActiveFilter={setActiveFilter}/>
       
       <div className='center'>
         <div className='discover-grids'>
