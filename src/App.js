@@ -3,6 +3,7 @@ import DiscoverPage from './Components/DiscoverPage';
 import SearchBar from './Components/SearchBar';
 import React, { useEffect, useReducer, useState } from 'react'
 import SearchForMovies from './Components/SearchForMovies';
+import LeftSideBar from './Components/LeftSideBar';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -21,12 +22,16 @@ function App() {
     imageConfig: imageConfig,
     genres: genres
   }
-  
+  function searchMovies(){
+    SearchForMovies("movies", setMovies, searchTerm, "")
+  }
   return (
-    <div className="App">
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-      <button onClick={() => SearchForMovies("movies", setMovies, searchTerm, "")}>Search</button>
-      <DiscoverPage movieInformation={movieInformation} />
+    <div className="App" style={{display: "flex"}}>
+      <LeftSideBar />
+      <div>
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchMovies={searchMovies}/>
+        <DiscoverPage movieInformation={movieInformation} />
+      </div>
     </div>
   );
 }
