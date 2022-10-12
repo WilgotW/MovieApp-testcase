@@ -9,27 +9,31 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [movies, setMovies] = useState([]);
   const [imageConfig, setImageConfig] = useState([]);
+  const [genreIds, setGenreIds] = useState([]);
   const [activeFilter, setActiveFilter] = useState("");
 
   useEffect(() => {
-    SearchForMovies("config", setImageConfig, "", "");
-    SearchForMovies("genres", "", "", "");
+    SearchForMovies("config", setImageConfig);
+    SearchForMovies("genres", setGenreIds);
   }, [])
+  useEffect(() => {
+    activeFilter != "" && SearchForMovies("filter", setMovies, searchTerm, activeFilter, genreIds)
+  }, [activeFilter])
 
   const movieInformation = {
     searchTerm: searchTerm,
     movies: movies,
     imageConfig: imageConfig,
-    filter: activeFilter
+    filter: activeFilter,
+    genreIds: genreIds
   }
   function searchMovies(){
-    SearchForMovies("movies", setMovies, searchTerm, activeFilter)
+    SearchForMovies("movies", setMovies, searchTerm, activeFilter, genreIds)
   }
   return (
     <div className="App" style={{display: "flex"}}>
       <LeftSideBar />
       <div>
-        {activeFilter}
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchMovies={searchMovies}/>
         <DiscoverPage movieInformation={movieInformation} setActiveFilter={setActiveFilter}/>
       </div>
