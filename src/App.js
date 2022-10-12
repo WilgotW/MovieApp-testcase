@@ -2,44 +2,31 @@ import './App.css';
 import DiscoverPage from './Components/DiscoverPage';
 import SearchBar from './Components/SearchBar';
 import React, { useEffect, useReducer, useState } from 'react'
-import FetchMovies from './Components/FetchMovies';
-import Movie from './Components/Movie';
+import SearchForMovies from './Components/SearchForMovies';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [movies, setMovies] = useState([]);
   const [imageConfig, setImageConfig] = useState([]);
+  const [genres, setGenres] = useState([]);
 
-  async function searchForMovies (searchTerm, filter) {
-    const movieInformation = {
-      type: "movies",
-      filter: filter,
-      searchTerm: searchTerm
-    }
-    const response = await FetchMovies(movieInformation);
-    console.log(response)
-    setMovies([response]);
-  }
-  async function fetchImageConfig (){
-    const movieInformation = {
-      type: "config"
-    }
-    const response = await FetchMovies(movieInformation);
-    setImageConfig([response])
-  }
   useEffect(() => {
-    fetchImageConfig()
+    SearchForMovies("config", setImageConfig, "", "");
+    SearchForMovies("genres", setGenres, "", "");
   }, [])
+
+  const movieInformation = {
+    searchTerm: searchTerm,
+    movies: movies,
+    imageConfig: imageConfig,
+    genres: genres
+  }
   
   return (
     <div className="App">
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-      <button onClick={() => searchForMovies(searchTerm, "H")}>Search</button>
-      <div className='center'>
-        <div className='discover-grids'>
-          {movies.length > 0 ? movies[0].map(movie => <Movie key={movie.id} movie={movie} imageConfig={imageConfig[0].images}/>) : <p>Search For Movies!</p>}      
-        </div>
-      </div>
+      <button onClick={() => SearchForMovies("movies", setMovies, searchTerm, "")}>Search</button>
+      <DiscoverPage movieInformation={movieInformation} />
     </div>
   );
 }
