@@ -25,13 +25,19 @@ function App() {
     SearchForMovies("trending", setTrendingMovies);
   }, [])
   useEffect(() => {
-    activeFilter != "" && SearchForMovies("filter", setMovies, searchTerm, activeFilter, genreIds, page)
+    filterSearch()
   }, [activeFilter])
   useEffect(() => {
+    console.log(activeFilter)
     if(parseInt(page) != 0 && movieInformation.searchTerm != ""){
       searchMovies();
+    }else{
+      filterSearch();
     }
   }, [page])
+  function filterSearch(){
+    activeFilter != "" && SearchForMovies("filter", setMovies, "", activeFilter, genreIds, page)
+  }
 
   const movieInformation = {
     page: page,

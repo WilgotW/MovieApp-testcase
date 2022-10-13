@@ -14,10 +14,11 @@ export default function DiscoverPage({movieInformation, setActiveFilter, page, n
         </div>
       </div>
       <div className='center'>
-        <SwitchPage page={nextPage} name={"Next Page"}/>
-        {page}
         <SwitchPage page={previusPage} name={"Previus Page"}/>
+        {page}
+        <SwitchPage page={nextPage} name={"Next Page"}/>
       </div>
+      
       <div className='center'>
         {movieInformation != undefined
 
