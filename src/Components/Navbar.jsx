@@ -1,8 +1,9 @@
+import {Link} from 'react-router-dom';
 import React from 'react'
 import {AiOutlineHome} from 'react-icons/ai'
 import {FaRegCompass} from 'react-icons/fa'
 
-export default function LeftSideBar() {
+export default function Navbar() {
   return (
     <div style={{
         float: "left",
@@ -18,11 +19,11 @@ export default function LeftSideBar() {
                 
                 <div style={{display: "flex", alignItems: "center", justifyContent: "center", gap:"5px"}}>
                   <AiOutlineHome />
-                  <a href='#'>Home</a>
+                  <Link to='/'>Home</Link>
                 </div>
                 <div style={{display: "flex", alignItems: "center", justifyContent: "center", gap:"5px"}}>
                   <FaRegCompass />
-                  <a href='#'>Discover</a>
+                  <Link to='/discover'>Discover</Link>
                 </div>
                 
             </div>

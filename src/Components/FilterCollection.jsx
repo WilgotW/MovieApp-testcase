@@ -10,10 +10,9 @@ export default function FilterCollection({setActiveFilter}) {
       {name: "War", id: 5},
       {name: "Animation", id: 6},
       {name: "Drama", id: 7},
-      {name: "Horor", id: 8}
+      {name: "Horror", id: 8}
     ]
     const setFilter = (filter) =>{
-      filter.preventDefault();
       setActiveFilter(filter);
     }
   return (

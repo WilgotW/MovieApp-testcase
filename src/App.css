@@ -5,11 +5,16 @@ body{
   padding: 0;
   background: #1E1E1E;
 }
+a{
+  pointer-events: "none";
+  user-select: "none";
+}
 .App {
   height: 100vh;
   text-align: center;
   margin: 0;
   padding: 0;
+  color: white;
   
   font-family: 'Inter', sans-serif;
   font-style: normal;

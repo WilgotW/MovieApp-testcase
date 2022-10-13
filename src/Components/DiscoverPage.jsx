@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import FilterCollection from './FilterCollection'
 import Movie from './Movie'
+import SwitchPage from './SwitchPage'
 
-export default function DiscoverPage({movieInformation, setActiveFilter}) {
+export default function DiscoverPage({movieInformation, setActiveFilter, page, nextPage, previusPage}) {
   return (
     <div style={{width: "100%", position: "absolute", display: "flex", flexDirection: "column", justifyContent: "center"}}>
       {/* <div style={{width: "100%", paddingLeft: "400px"}}></div> */}
@@ -12,11 +13,17 @@ export default function DiscoverPage({movieInformation, setActiveFilter}) {
           <FilterCollection setActiveFilter={setActiveFilter}/>
         </div>
       </div>
-      
-      
-      
       <div className='center'>
+        <SwitchPage page={nextPage} name={"Next Page"}/>
+        {page}
+        <SwitchPage page={previusPage} name={"Previus Page"}/>
+      </div>
+      <div className='center'>
+        {movieInformation != undefined
+
+        }
         <div className='discover-grids'>
+          
           {movieInformation.movies.length > 0 && 
             movieInformation.movies[0].map(movie => 
             <Movie 
@@ -26,6 +33,7 @@ export default function DiscoverPage({movieInformation, setActiveFilter}) {
             />)
           }      
         </div>
+        
       </div>
       
     </div>
