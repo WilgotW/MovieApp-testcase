@@ -12,7 +12,8 @@ export default function FilterCollection({setActiveFilter}) {
       {name: "Drama", id: 7},
       {name: "Horor", id: 8}
     ]
-    function setFilter (filter){
+    const setFilter = (filter) =>{
+      filter.preventDefault();
       setActiveFilter(filter);
     }
   return (

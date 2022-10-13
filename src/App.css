@@ -49,6 +49,10 @@ body{
   background: white;
   color: black;
 }
+.filter-buttons:focus{
+  background: white;
+  color: black;
+}
 a{
   text-decoration: none;
   color:  white;
