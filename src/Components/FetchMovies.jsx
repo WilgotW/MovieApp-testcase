@@ -1,20 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import CreateCall from './CreateCall';
 
 const key = "d3967aacd6e3ef518c42a75acde3d777";
 export default async function FetchMovies(movieInformation) {
+    
     switch(movieInformation.type) {
         case "movies": {
             const response = await fetch("https://api.themoviedb.org/3/search/movie?api_key="+key+"&language=en-US&query=" + movieInformation.searchTerm +"&page="+movieInformation.page+"&include_adult=false")
                 .then(res=>res.clone().json());
             const movies = response.results;
-            console.log(response);
             return movies;
         }
         case "trending" : {
             const response = await fetch("https://api.themoviedb.org/3/trending/all/day?api_key="+key)
                 .then(res=>res.clone().json());
-            
-            return response;
+            return response.results;
         }
         case "filter": {
             const activeGenre = movieInformation.filter;        
@@ -35,13 +35,13 @@ export default async function FetchMovies(movieInformation) {
             return respone;
         }
         case "genres": {
-            const response = await fetch("https://api.themoviedb.org/3/genre/movie/list?api_key="+key+"&language=en-US")
+            const response = await fetch("https://api.themoviedb.org/3/genre/movie/list?api_key="+key)
                 .then(res => res.clone().json());
             return response;
         }
         default: {
             alert("Error");
-            return null;
+            return undefined;
         }
     }
     

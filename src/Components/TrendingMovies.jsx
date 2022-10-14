@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import GenerateImage from './GenerateImage'
 import Movie from './Movie'
 
-export default function TrendingMovies({imageConfig }) {
-    
+export default function TrendingMovies({movieInformation, imageConfig }) {
+   
   return (
-    <div>
-        {/* <Movie movie={} imageConfig={imageConfig} /> */}
+    <div style={{display: "flex"}}>
+      {movieInformation.movies.length > 0 &&
+        <>
+          <Movie movie={movieInformation.trendingMovies[0]} imageConfig={imageConfig} />
+          <Movie movie={movieInformation.trendingMovies[1]} imageConfig={imageConfig} />
+        </>
+      }
+
     </div>
   )
 }

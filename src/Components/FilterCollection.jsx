@@ -13,6 +13,7 @@ export default function FilterCollection({setActiveFilter}) {
       {name: "Horror", id: 8}
     ]
     const setFilter = (filter) =>{
+
       setActiveFilter(filter);
     }
   return (

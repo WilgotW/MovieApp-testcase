@@ -18,6 +18,7 @@ function App() {
   const [genreIds, setGenreIds] = useState([]);
   const [activeFilter, setActiveFilter] = useState("");
   const [page, setPage] = useState("1");
+  const [searchType, setSearchType] = useState("");
 
   useEffect(() => {
     SearchForMovies("config", setImageConfig);
@@ -38,8 +39,11 @@ function App() {
   function filterSearch(){
     activeFilter != "" && SearchForMovies("filter", setMovies, "", activeFilter, genreIds, page)
   }
-
+  // useEffect(() => {
+  //   SearchForMovies(type, movieInformation)
+  // }, [searchType])
   const movieInformation = {
+    type: searchType,
     page: page,
     searchTerm: searchTerm,
     movies: movies,
@@ -51,27 +55,15 @@ function App() {
   function searchMovies(){
     SearchForMovies("movies", setMovies, searchTerm, activeFilter, genreIds, page)
   }
-  function nextPage(){
-    let pageNumber = parseInt(page);
-    pageNumber++;
-    setPage(pageNumber.toString());
-  }
-  function previusPage(){
-    let pageNumber = parseInt(page);
-    if(pageNumber > 1){
-      pageNumber--;
-      setPage(pageNumber.toString());
-    }
-  }
+  
   return (
     <Router>
       <div className="App" style={{display: "flex"}}>
         <Navbar />
         <div>
-          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchMovies={searchMovies}/>
             <Routes>
-              <Route exact path='/' element={<HomePage />} />
-              <Route path='/discover' element={<DiscoverPage movieInformation={movieInformation} setActiveFilter={setActiveFilter} page={page} nextPage={nextPage} previusPage={previusPage}/>}/>
+              <Route exact path='/' element={<HomePage movieInformation={movieInformation} />} />
+              <Route path='/discover' element={<DiscoverPage/>}/>
             </Routes>
           
         </div>
