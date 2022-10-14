@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import GenerateImage from './GenerateImage'
 
 export default function Movie({movie}) {
-  const moviePoster = GenerateImage("https://image.tmdb.org/t/p/w500/", movie.imageSize, movie.imagePath);
+  const moviePoster = GenerateImage("https://image.tmdb.org/t/p/", "w185", movie.poster_path);
   const [isHovering, setIsHovering] = useState(false);
   return (
     <div style={{width: "fit-content"}} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
