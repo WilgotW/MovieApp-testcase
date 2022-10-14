@@ -6,41 +6,61 @@ import SearchBar from './SearchBar'
 import GenerateImage from './GenerateImage'
 import FetchMovies from './FetchMovies'
 import SearchForMovies from './SearchForMovies'
+import getApiResponse from './getApiResponse'
+import getSearchedMovies from './ApiCalls/getSearchedMovies'
 
 export default function DiscoverPage() {
-  const [page, setPage] = useState("1")
-  const [genreIds, setGenreIds] = useState([]);
-  const [activeFilter, setActiveFilter] = useState("");
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [imageConfig, setImageConfig] = useState([]);
-
-  useEffect(() => {
-    activeFilter !== "" && searchMovies();
-  }, [activeFilter])
- 
-  useEffect(() => {
-    async function getImages(){
-      const respone = await FetchMovies({type: "config"});
-      setImageConfig(await respone);
-    }
-    async function getGenreIds(){
-      const response = await FetchMovies({type: "genres"});
-      setGenreIds(await response);
-    }
-    getImages()
-    getGenreIds()
-  }, [])
+  const [page, setPage] = useState("1");
   
-  async function searchMovies(){
-    const response = await FetchMovies({
-      type: activeFilter,
-      searchTerm: searchTerm,
-      filter: activeFilter
-    });
-    setMovies(await response);
+  async function getMovies(){
+    const newMovies = await getSearchedMovies(searchTerm);
+    setMovies([newMovies])
+    
+  }
+  const movie = {
+    title: "",
+    image: "",
+    genre: "",
+    id,
   }
 
+
+  // 
+  // const [genreIds, setGenreIds] = useState([]);
+  // const [activeFilter, setActiveFilter] = useState("");
+  // const [movies, setMovies] = useState([]);
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [imageConfig, setImageConfig] = useState([]);
+
+  
+  // useEffect(() => {
+  //   activeFilter !== "" && searchMovies();
+  // }, [activeFilter])
+ 
+  // useEffect(() => {
+  //   async function getImages(){
+  //     const respone = await FetchMovies({type: "config"});
+  //     setImageConfig(await respone);
+  //   }
+  //   async function getGenreIds(){
+  //     const response = await FetchMovies({type: "genres"});
+  //     setGenreIds(await response);
+  //   }
+  //   getImages()
+  //   getGenreIds()
+  // }, [])
+  
+  // async function searchMovies(){
+  //   const response = await getApiResponse({
+  //     type: activeFilter,
+  //     searchTerm: searchTerm,
+  //     filter: activeFilter
+  //   });
+  //   setMovies(await response);
+  // }
+  
   function nextPage(){
     let pageNumber = parseInt(page);
     pageNumber++;
