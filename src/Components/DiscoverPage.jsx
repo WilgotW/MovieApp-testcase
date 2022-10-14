@@ -34,7 +34,7 @@ export default function DiscoverPage() {
   
   async function searchMovies(){
     const response = await FetchMovies({
-      type: "movies",
+      type: activeFilter,
       searchTerm: searchTerm,
       filter: activeFilter
     });
