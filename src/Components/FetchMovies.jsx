@@ -1,5 +1,3 @@
-import React, { useEffect } from 'react'
-import CreateCall from './CreateCall';
 
 const key = "d3967aacd6e3ef518c42a75acde3d777";
 export default async function FetchMovies(movieInformation) {

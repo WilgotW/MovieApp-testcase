@@ -39,9 +39,7 @@ function App() {
   function filterSearch(){
     activeFilter != "" && SearchForMovies("filter", setMovies, "", activeFilter, genreIds, page)
   }
-  // useEffect(() => {
-  //   SearchForMovies(type, movieInformation)
-  // }, [searchType])
+  
   const movieInformation = {
     type: searchType,
     page: page,
