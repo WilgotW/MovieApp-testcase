@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Movie from './Movie'
 
 export default function TrendingMovies({trendingMovies, imageConfig }) {
- 
-
   return (
     <div style={{display: "flex", gap: "20px"}}>
       {trendingMovies.length != 0 &&
@@ -16,7 +14,6 @@ export default function TrendingMovies({trendingMovies, imageConfig }) {
           </div>
         </>
       }
-
     </div>
   )
 }

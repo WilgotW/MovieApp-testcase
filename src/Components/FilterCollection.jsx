@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import FilterButton from './FilterButton';
+import React from 'react'
+import FilterButton from './Interactive/FilterButton';
 
 export default function FilterCollection({setActiveFilter}) {
     const genres = [

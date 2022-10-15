@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import FilterCollection from './FilterCollection'
 import Movie from './Movie'
-import SearchBar from './SearchBar'
+import SearchBar from './Interactive/SearchBar'
 
-import SwitchPage from './SwitchPage';
+import SwitchPage from './Interactive/SwitchPage';
 import getSearchedMovies from './ApiCalls/getSearchedMovies'
-import movieData from './movieData'
 import getImagesConfig from './ApiCalls/getImagesConfig'
 import getGenreIds from './ApiCalls/getGenreIds';
 import getFilteredMovies from './ApiCalls/getFilteredMovies'
