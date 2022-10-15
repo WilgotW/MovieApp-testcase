@@ -11,17 +11,15 @@ import getFilteredMovies from './ApiCalls/getFilteredMovies'
 
 export default function DiscoverPage() {
   const [page, setPage] = useState("1");
-
   const [searchTerm, setSearchTerm] = useState("");
   const [allMovies, setAllMovies] = useState([]);
   const [imageConfig, setImageConfig] = useState([]);
   const [activeFilter, setActiveFilter] = useState("");
   const [genreIds, setGenreIds] = useState([]);
 
-
   async function getMovies(){
     if(activeFilter !== ""){
-      setActiveFilter("");
+      setActiveFilter("")
       await setPage("1");
     }
     setAllMovies(await getSearchedMovies(searchTerm, page));
@@ -55,18 +53,6 @@ export default function DiscoverPage() {
     getImageConfig();
   }, []);
 
-  
-  // function setMovieSize(size){
-  //   setAllMovies(allMovies.map((movie) => {
-  //     const addSize = {
-  //       ...movie,
-  //       imageSize: size
-  //     }
-  //     return addSize;
-  //   }))
-  // }
-  
-  
   function nextPage(){
     let pageNumber = parseInt(page);
     pageNumber++;
