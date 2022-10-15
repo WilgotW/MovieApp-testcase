@@ -8,6 +8,10 @@ import HomePage from './Components/HomePage';
 import Navbar from './Components/Navbar';
 
 function App() {
+  const handleScroll = ev => {
+    console.log("hellooooo")
+    
+  }
   // const [searchTerm, setSearchTerm] = useState('');
   // const [movies, setMovies] = useState([]);
   // const [trendingMovies, setTrendingMovies] = useState([]);
@@ -53,7 +57,7 @@ function App() {
   
   return (
     <Router>
-      <div className="App" >
+      <div className="App" style={{display: "flex"}}>
         <Navbar />
         <div>
             <Routes>

@@ -4,7 +4,7 @@ import GenerateImage from './GenerateImage'
 export default function Movie({movie, imageSize, imagePath}) {
   const moviePoster = GenerateImage("https://image.tmdb.org/t/p/", imageSize, imagePath);
   const [isHovering, setIsHovering] = useState(false);
-  console.log(movie)
+ 
   return (
     <div style={{width: "fit-content"}} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
       <div style={{

@@ -3,6 +3,7 @@
 body{
   margin: 0;
   padding: 0;
+  height: 100vh;
   background: #1E1E1E;
 }
 a{
@@ -22,7 +23,7 @@ a{
   width: fit-content;
   gap: 1rem;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(8, 1fr);
 }
 .center{
   display: flex;
@@ -30,10 +31,10 @@ a{
   align-items: center;
 }
 .movie-poster{
-  transition: all .2s ease-in-out;
+  transition: all .15s ease-in-out;
 }
 .movie-poster:hover{
-  transform: scale(1.1);
+  transform: scale(1.05);
   filter: brightness(0.5);
   cursor: pointer;
   outline: 3px solid white;

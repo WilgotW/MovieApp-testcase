@@ -1,15 +1,23 @@
 import {Link} from 'react-router-dom';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {AiOutlineHome} from 'react-icons/ai'
 import {FaRegCompass} from 'react-icons/fa'
 
 export default function Navbar() {
+  const [height, setHeight] = useState("100vh");
+  
+  useEffect(() => {
+    window.onscroll = () =>{
+      console.log("heeee")
+      setHeight("100%")
+    }
+  }, []);
+  
   return (
     <div style={{
-        float: "left",
         width: "220px",
         background: "#171717",
-        minHeight: "100%",
+        height: {height},
         color: "white"
     }}>
         <h1>Movies</h1>

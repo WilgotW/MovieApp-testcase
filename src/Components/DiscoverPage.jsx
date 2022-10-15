@@ -56,7 +56,7 @@ export default function DiscoverPage() {
     getImageConfig();
   }, []);
 
-
+  
   // function setMovieSize(size){
   //   setAllMovies(allMovies.map((movie) => {
   //     const addSize = {
@@ -81,10 +81,11 @@ export default function DiscoverPage() {
     }
   }
   return (
-    <div style={{width: "100%", position: "absolute", display: "flex", flexDirection: "column", justifyContent: "center"}}>
+    <div style={{display:"flex", justifyContent: "center", paddingLeft: "50px"}}>
+      <div style={{display: "flex", flexDirection: "column", justifyContent: "center"}}>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchMovies={getMovies}/>
 
-      <div style={{display: "flex", flexDirection: "column", justifyContent: "left", paddingLeft: "150px"}}>
+      <div style={{display: "flex", flexDirection: "column", justifyContent: "left", }}>
         <h1 style={{color: "white", width: "0"}}>Discover</h1>
         <div>
           <FilterCollection setActiveFilter={setActiveFilter}/>
@@ -112,6 +113,8 @@ export default function DiscoverPage() {
         
       </div>
       
+      </div>
     </div>
+    
   )
 }
