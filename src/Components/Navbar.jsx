@@ -7,9 +7,8 @@ export default function Navbar() {
   return (
     <div style={{
         float: "left",
-        width: "120px",
+        width: "220px",
         background: "#171717",
-        position: "absolute",
         minHeight: "100%",
         color: "white"
     }}>

@@ -53,7 +53,7 @@ function App() {
   
   return (
     <Router>
-      <div className="App" style={{display: "flex"}}>
+      <div className="App" >
         <Navbar />
         <div>
             <Routes>

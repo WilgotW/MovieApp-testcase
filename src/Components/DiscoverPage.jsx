@@ -23,7 +23,7 @@ export default function DiscoverPage() {
   async function getMovies(){
     if(activeFilter !== ""){
       setActiveFilter("");
-      setPage("1");
+      await setPage("1");
     }
     setAllMovies(await getSearchedMovies(searchTerm, page));
   }
@@ -36,17 +36,6 @@ export default function DiscoverPage() {
       }      
     }
   }, [page])
-
-
-  // useEffect(() => {
-  //   if(allMovies.length > 0){
-  //     console.log(allMovies);
-  //     setAllMovies(allMovies.map((movie) => {
-  //       movieData(movie.title, movie.genre_ids, movie.release_date, movie.backdrop_path, movie.id, "w780");
-  //     }));
-  //     // setMovieSize("w780")
-  //   }
-  // }, [allMovies])
   
   async function filteredMovies(){
     setAllMovies(await getFilteredMovies(activeFilter, genreIds, page));
@@ -115,6 +104,8 @@ export default function DiscoverPage() {
             <Movie 
               key={movie.id} 
               movie={movie} 
+              imageSize={"w185"}
+              imagePath={movie.poster_path}
             />)
           }      
         </div>

@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import GenerateImage from './GenerateImage'
 import Movie from './Movie'
 
-export default function TrendingMovies({movieInformation, imageConfig }) {
-   
+export default function TrendingMovies({trendingMovies, imageConfig }) {
+ 
+
   return (
-    <div style={{display: "flex"}}>
-      {/* {movieInformation.movies.length > 0 &&
+    <div style={{display: "flex", gap: "100px"}}>
+      {trendingMovies.length != 0 &&
         <>
-          <Movie movie={movieInformation.trendingMovies[0]} imageConfig={imageConfig} />
-          <Movie movie={movieInformation.trendingMovies[1]} imageConfig={imageConfig} />
+          <div>
+            <Movie movie={trendingMovies[0]} imageConfig={imageConfig} imagePath={trendingMovies[0].backdrop_path} imageSize={"w500"} />
+          </div>
+          <div>
+            <Movie movie={trendingMovies[1]} imageConfig={imageConfig} imagePath={trendingMovies[1].backdrop_path} imageSize={"w500"}/>
+          </div>
         </>
-      } */}
+      }
 
     </div>
   )
