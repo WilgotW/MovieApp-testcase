@@ -16,27 +16,20 @@ export default function DiscoverPage() {
   const [imageConfig, setImageConfig] = useState([]);
   const [activeFilter, setActiveFilter] = useState("");
   const [genreIds, setGenreIds] = useState([]);
+  const [noResults, setNoResults] = useState(false);
 
   async function getMovies(){
     setActiveFilter("")
-    searchTerm != "" && setAllMovies(await getSearchedMovies(searchTerm, page));
+    searchTerm != "" && setAllMovies(await getSearchedMovies(searchTerm, page, setNoResults));
   }
   async function filteredMovies(){
     setAllMovies(await getFilteredMovies(activeFilter, genreIds, page));
   }
   useEffect(() => {
-    if(activeFilter != ""){
-      console.log("Not")
-    }
-    console.log(activeFilter)
-
     if(allMovies.length > 0) {
-      if(activeFilter == ""){
-        getMovies();
-      }else{
-        console.log("hehhe")
-        filteredMovies();
-      }      
+      activeFilter == "" ? getMovies() : filteredMovies()
+    }else {
+      setNoResults(true)
     }
   }, [page])
   
@@ -67,7 +60,7 @@ export default function DiscoverPage() {
   return (
     <div style={{display:"flex", justifyContent: "center", paddingLeft: "50px"}}>
       <div style={{display: "flex", flexDirection: "column", justifyContent: "center"}}>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchMovies={getMovies}/>
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchMovies={getMovies}/>
 
       <div style={{display: "flex", flexDirection: "column", justifyContent: "left", }}>
         <h1 style={{color: "white", width: "0"}}>Discover</h1>
@@ -82,8 +75,7 @@ export default function DiscoverPage() {
       </div>
       
       <div className='center'>
-        <div className='discover-grids'>
-          
+        {noResults ? <div style={{color: "red"}}>No Results Found</div> : <div className='discover-grids'>
           {allMovies.length > 0 && 
             allMovies.map(movie => 
             <Movie 
@@ -92,8 +84,9 @@ export default function DiscoverPage() {
               imageSize={"w185"}
               imagePath={movie.poster_path}
             />)
-          }      
-        </div>
+          }</div>
+        }      
+          
       </div>
       </div>
     </div>
