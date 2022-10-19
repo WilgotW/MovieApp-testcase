@@ -4,10 +4,10 @@ import Movie from './Movie'
 import SearchBar from './Interactive/SearchBar'
 
 import SwitchPage from './Interactive/SwitchPage';
-import getSearchedMovies from './ApiCalls/getSearchedMovies'
-import getImagesConfig from './ApiCalls/getImagesConfig'
-import getGenreIds from './ApiCalls/getGenreIds';
-import getFilteredMovies from './ApiCalls/getFilteredMovies'
+import getSearchedMovies from '../ApiCalls/getSearchedMovies'
+import getImagesConfig from '../ApiCalls/getImagesConfig'
+import getGenreIds from '../ApiCalls/getGenreIds';
+import getFilteredMovies from '../ApiCalls/getFilteredMovies'
 
 export default function DiscoverPage() {
   const [page, setPage] = useState(1);
@@ -19,7 +19,7 @@ export default function DiscoverPage() {
 
   async function getMovies(){
     setActiveFilter("")
-    setAllMovies(await getSearchedMovies(searchTerm, page));
+    searchTerm != "" && setAllMovies(await getSearchedMovies(searchTerm, page));
   }
   async function filteredMovies(){
     setAllMovies(await getFilteredMovies(activeFilter, genreIds, page));
@@ -48,7 +48,6 @@ export default function DiscoverPage() {
     getImageConfig();
   }, []);
   
-
   useEffect(() => {
     if(page != 1){
       setPage(1);
@@ -57,7 +56,6 @@ export default function DiscoverPage() {
     }
   }, [activeFilter])
  
-
   function nextPage(){
     setPage(prev => prev + 1);
   }
@@ -96,9 +94,7 @@ export default function DiscoverPage() {
             />)
           }      
         </div>
-        
       </div>
-      
       </div>
     </div>
     
