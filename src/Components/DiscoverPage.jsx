@@ -75,9 +75,9 @@ export default function DiscoverPage() {
           <FilterCollection setActiveFilter={setActiveFilter}/>
         </div>
       </div>
-      <div className='center'>
+      <div style={{width: "100%",display: "flex", justifyContent: "space-between", height: "50px"}}>
         <SwitchPage page={previusPage} name={"Previus Page"}/>
-        {page}
+        <p style={{fontSize: "20px", margin: "0", fontWeight: "500"}}>Page: {page}</p>
         <SwitchPage page={nextPage} name={"Next Page"}/>
       </div>
       

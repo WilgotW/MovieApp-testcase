@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import TrendingMovies from './TrendingMovies';
-import getImagesConfig from './ApiCalls/getImagesConfig';
-import getTrendingMovies from './ApiCalls/getTrendingMovies';
+import getImagesConfig from '../ApiCalls/getImagesConfig';
+import getTrendingMovies from '../ApiCalls/getTrendingMovies';
 import NowPlaying from './NowPlaying';
-import getNowPlaying from './ApiCalls/getNowPlaying';
-import getTopRated from './ApiCalls/getTopRated';
+import getNowPlaying from '../ApiCalls/getNowPlaying';
+import getTopRated from '../ApiCalls/getTopRated';
 import TopRated from './TopRated';
 
 export default function HomePage() {
