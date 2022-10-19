@@ -8,7 +8,7 @@ export default function SwitchPage({page, name}) {
   
   return (
     <div>
-      {name == "Next Page" ? <BsFillArrowRightCircleFill style={{fontSize: "30px"}} onClick={page}/> 
-        : <BsFillArrowLeftCircleFill style={{fontSize: "30px"}} onClick={page} /> }
+      {name == "Next Page" ? <BsFillArrowRightCircleFill className='icons' style={{fontSize: "30px"}} onClick={page}/> 
+        : <BsFillArrowLeftCircleFill className='icons' style={{fontSize: "30px"}} onClick={page} /> }
     </div>)
 }

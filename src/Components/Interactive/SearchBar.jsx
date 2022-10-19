@@ -1,4 +1,5 @@
 import React from 'react'
+import {AiOutlineSearch} from 'react-icons/ai';
 
 export default function SearchBar({searchTerm, setSearchTerm, searchMovies}) {
   const handleSearch = ev => {
@@ -6,16 +7,21 @@ export default function SearchBar({searchTerm, setSearchTerm, searchMovies}) {
     searchMovies();
   }
   return (
-    <div style={{displat: "flex", justifyContent: "left", height: "100px", alignItems: "center"}}>
-      <form onSubmit={handleSearch} style={{height: "100%", display: "flex", alignItems: "center"}}>
+    <div style={{marginTop: "30px" ,displat: "flex", justifyContent: "left", height: "fit-content" , width: "fit-content", alignItems: "center", position: "relative", borderRadius: "70px", overflow: "hidden"}}>
+      <form onSubmit={handleSearch} style={{display: "flex", alignItems: "center", width: "350px", background: "white", padding: "5px"}}>
         <input name='search' type="text" onChange={ev => setSearchTerm(ev.target.value)} value={searchTerm} placeholder='Search movie titles' style={{
+          marginLeft: "10px",
           border: "none",
+          outline: "none",
           height: "35px",
-          width: "350px",
-          background: "white",
+          width: "85%",
+          background: "transparent",
           borderRadius: "20px"
         }}/>  
-        <input type="button" onClick={handleSearch} value="Search"/>
+        <div style={{position: "absolute", width: "95%", alignItems: "center", display: "flex", justifyContent: "right", height: "0"}}>
+          <AiOutlineSearch className='icons' onClick={handleSearch} style={{fontSize: "25px", color: "black"}}/>
+        </div>
+        
       </form>
     </div>
   )
