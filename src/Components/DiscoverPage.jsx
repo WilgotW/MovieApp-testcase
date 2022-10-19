@@ -10,7 +10,7 @@ import getGenreIds from './ApiCalls/getGenreIds';
 import getFilteredMovies from './ApiCalls/getFilteredMovies'
 
 export default function DiscoverPage() {
-  const [page, setPage] = useState("1");
+  const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [allMovies, setAllMovies] = useState([]);
   const [imageConfig, setImageConfig] = useState([]);
@@ -18,33 +18,28 @@ export default function DiscoverPage() {
   const [genreIds, setGenreIds] = useState([]);
 
   async function getMovies(){
-    if(activeFilter !== ""){
-      setActiveFilter("")
-      await setPage("1");
-    }
+    setActiveFilter("")
     setAllMovies(await getSearchedMovies(searchTerm, page));
   }
+  async function filteredMovies(){
+    setAllMovies(await getFilteredMovies(activeFilter, genreIds, page));
+  }
   useEffect(() => {
+    if(activeFilter != ""){
+      console.log("Not")
+    }
+    console.log(activeFilter)
+
     if(allMovies.length > 0) {
       if(activeFilter == ""){
         getMovies();
       }else{
+        console.log("hehhe")
         filteredMovies();
       }      
     }
   }, [page])
   
-  async function filteredMovies(){
-    setAllMovies(await getFilteredMovies(activeFilter, genreIds, page));
-  }
-
-  useEffect(() => {
-    if(activeFilter !== ""){
-      setPage("1");
-      filteredMovies();
-    }
-  }, [activeFilter])
- 
   useEffect(() => {
     async function getImageConfig(){
       setImageConfig(await getImagesConfig());
@@ -52,17 +47,23 @@ export default function DiscoverPage() {
     }
     getImageConfig();
   }, []);
+  
+
+  useEffect(() => {
+    if(page != 1){
+      setPage(1);
+    }else {
+      filteredMovies();
+    }
+  }, [activeFilter])
+ 
 
   function nextPage(){
-    let pageNumber = parseInt(page);
-    pageNumber++;
-    setPage(pageNumber.toString());
+    setPage(prev => prev + 1);
   }
   function previusPage(){
-    let pageNumber = parseInt(page);
-    if(pageNumber > 1){
-      pageNumber--;
-      setPage(pageNumber.toString());
+    if(page > 1){
+      setPage(prev => prev - 1);
     }
   }
   return (
