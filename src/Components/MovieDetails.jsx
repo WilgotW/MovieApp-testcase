@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import getCasts from '../ApiCalls/getCasts';
 import getExternialId from '../ApiCalls/getExternialIds';
 import getMovieByExternialId from '../ApiCalls/getMovieByExternialId';
+import getVideos from '../ApiCalls/getVideos';
 import generateImage from './generateImage';
 import PersonProfile from './PersonProfile';
 
@@ -13,11 +14,13 @@ export default function MovieDetails() {
   const [movie, setMovie] = useState([]);
   const [moviePoster, setMoviePoster] = useState("");
   const [cast, setCast] = useState([]);
+  const [videos, setVideos] = useState("");
 
   useEffect(() => {
     async function getExternial(){
       setExternialId(await getExternialId(movieId));
       setCast(await getCasts(movieId));
+      setVideos(await getVideos(movieId));
     } 
     getExternial();
   }, [])
@@ -30,7 +33,7 @@ export default function MovieDetails() {
 
   useEffect(() => {
     setMoviePoster(generateImage("https://image.tmdb.org/t/p/", "h632", movie.poster_path));
-    console.log(externalId);
+    console.log(movie)
   }, [movie])
   
   return (
@@ -65,6 +68,28 @@ export default function MovieDetails() {
             }
           </div>
         </div>
+        {/* <div style={{
+            height: "250px",
+            width: "350px",
+            border: "5px solid white",
+            boxShadow: "0 5px 15px rgba(0,0,0, 0.7)",
+            cursor: "pointer",
+            overflow: "hidden"
+        }}>
+          <iframe src='https://www.youtube.com/watch?v=XG_CimbpVMQ' className='video-player'/>
+        </div> */}
+        
+            {videos !== [] ?
+              <div className='video-container'>
+                <div className='video'>
+                  <iframe title='Youtube player' src={"https://youtube.com/embed/"+videos+"?autoplay=0"}>
+                  </iframe>
+                </div>
+              </div> 
+              : <p>No videos Aviable</p>
+            } 
+         
+        
       </>
     }
   </div>
