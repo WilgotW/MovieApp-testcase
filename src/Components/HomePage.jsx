@@ -25,7 +25,6 @@ export default function HomePage() {
  
   return (
     <div style={{display: "flex", width: "fit-content", flexDirection: "column", paddingLeft: "50px"}}>
-      
       <h1 style={{width: "0"}}>Trending</h1>
       <div style={{display: "flex", justifyContent: "center"}}>
         <TrendingMovies trendingMovies={trendingMovies} imageConfig={imageConfig}/>

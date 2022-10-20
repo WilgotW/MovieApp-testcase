@@ -22,6 +22,7 @@ a{
 }
 
 .App {
+  width: fit-content;
   height: 100vh;
   text-align: center;
   color: white;
@@ -49,6 +50,12 @@ a{
   filter: brightness(0.5);
   cursor: pointer;
   outline: 3px solid white;
+}
+.cast-profile{
+  transition: all .05s ease-in-out;
+}
+.cast-profile:hover{
+  filter: brightness(0.5);
 }
 .filter-buttons{
   width: 110px;
