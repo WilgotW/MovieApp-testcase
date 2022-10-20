@@ -1,22 +1,24 @@
 import React, { useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
-import GenerateImage from './GenerateImage'
+import { useNavigate } from 'react-router-dom';
+import generateImage from './generateImage'
 
 export default function Movie({ movie, imageSize, imagePath }) {
   // useParams
-  const moviePoster = GenerateImage("https://image.tmdb.org/t/p/", imageSize, imagePath);
+  const moviePoster = generateImage("https://image.tmdb.org/t/p/", imageSize, imagePath);
   const [isHovering, setIsHovering] = useState(false);
+  const navigate = useNavigate();
+
+  const navigateToDetails = () => navigate("/movies/"+movie.id)
 
   return (
-    <div onClick={() => {
-      
-    }}style={{ background: imagePath == undefined && "orange", textAlign: "center" }} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+    <div onClick={() => {navigateToDetails()}}style={{ 
+      background: imagePath == undefined && "orange", textAlign: "center" 
+    }}onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
       <div style={{
         position: "relative",
         textAlign: "center",
         color: "white"
       }}>
-        <Link to={"/movies/"+movie.id}>{movie.title}</Link> 
         {imagePath != undefined ?
           <img
             src={moviePoster}
