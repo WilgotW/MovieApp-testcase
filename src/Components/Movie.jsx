@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import GenerateImage from './GenerateImage'
 
 export default function Movie({ movie, imageSize, imagePath }) {
@@ -8,12 +8,15 @@ export default function Movie({ movie, imageSize, imagePath }) {
   const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <div onClick={() => {console.log(movie)}} style={{ background: imagePath == undefined && "orange", textAlign: "center" }} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+    <div onClick={() => {
+      
+    }}style={{ background: imagePath == undefined && "orange", textAlign: "center" }} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
       <div style={{
         position: "relative",
         textAlign: "center",
         color: "white"
       }}>
+        <Link to={"/movies/"+movie.id}>{movie.title}</Link> 
         {imagePath != undefined ?
           <img
             src={moviePoster}
