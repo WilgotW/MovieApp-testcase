@@ -29,7 +29,7 @@ export default function DiscoverPage() {
     if(allMovies.length > 0) {
       activeFilter == "" ? getMovies() : filteredMovies()
     }else {
-      setNoResults(true)
+      // setNoResults(true)
     }
   }, [page])
   

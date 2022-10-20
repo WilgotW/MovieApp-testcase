@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom';
 import GenerateImage from './GenerateImage'
 
 export default function Movie({ movie, imageSize, imagePath }) {
+  // useParams
   const moviePoster = GenerateImage("https://image.tmdb.org/t/p/", imageSize, imagePath);
   const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <div style={{ background: imagePath == undefined && "orange", textAlign: "center" }} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+    <div onClick={() => {console.log(movie)}} style={{ background: imagePath == undefined && "orange", textAlign: "center" }} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
       <div style={{
         position: "relative",
         textAlign: "center",
