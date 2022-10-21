@@ -72,6 +72,7 @@ export default function DiscoverPage() {
         </div>
       </div>
       <div style={{width: "100%",display: "flex", justifyContent: "space-between", height: "50px"}}>
+        
         {allMovies.length >= 20 && 
           <>
             <SwitchPage page={previusPage} name={"Previus Page"}/>
