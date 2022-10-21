@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import FilterCollection from './FilterCollection'
 import Movie from './Movie'
 import SearchBar from './Interactive/SearchBar'
-
 import SwitchPage from './Interactive/SwitchPage';
 import getSearchedMovies from '../ApiCalls/getSearchedMovies'
 import getImagesConfig from '../ApiCalls/getImagesConfig'
@@ -16,21 +15,16 @@ export default function DiscoverPage() {
   const [imageConfig, setImageConfig] = useState([]);
   const [activeFilter, setActiveFilter] = useState("");
   const [genreIds, setGenreIds] = useState([]);
-  const [noResults, setNoResults] = useState(false);
 
   async function getMovies(){
     setActiveFilter("")
-    searchTerm != "" && setAllMovies(await getSearchedMovies(searchTerm, page, setNoResults));
+    searchTerm !== "" && setAllMovies(await getSearchedMovies(searchTerm, page));
   }
   async function filteredMovies(){
     setAllMovies(await getFilteredMovies(activeFilter, genreIds, page));
   }
   useEffect(() => {
-    if(allMovies.length > 0) {
-      activeFilter == "" ? getMovies() : filteredMovies()
-    }else {
-      // setNoResults(true)
-    }
+    allMovies.length > 0 && activeFilter == "" ? getMovies() : filteredMovies()
   }, [page])
   
   useEffect(() => {
@@ -49,33 +43,35 @@ export default function DiscoverPage() {
     }
   }, [activeFilter])
  
-  function nextPage(){
-    setPage(prev => prev + 1);
-  }
-  function previusPage(){
-    if(page > 1){
-      setPage(prev => prev - 1);
-    }
-  }
+  //switch page:
+  const nextPage = () => setPage(prev => prev + 1)
+  const previusPage = () => page > 1 && setPage(prev => prev - 1);
+    
   return (
     <div style={{display:"flex", justifyContent: "center", paddingLeft: "50px"}}>
       <div style={{display: "flex", flexDirection: "column", justifyContent: "center"}}>
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchMovies={getMovies}/>
-
       <div style={{display: "flex", flexDirection: "column", justifyContent: "left", }}>
         <h1 style={{color: "white", width: "0"}}>Discover</h1>
         <div>
-          <FilterCollection setActiveFilter={setActiveFilter}/>
+          <FilterCollection setActiveFilter={setActiveFilter} searchTerm={searchTerm}/>
         </div>
       </div>
       <div style={{width: "100%",display: "flex", justifyContent: "space-between", height: "50px"}}>
-        <SwitchPage page={previusPage} name={"Previus Page"}/>
-        <p style={{fontSize: "20px", margin: "0", fontWeight: "500"}}>Page: {page}</p>
-        <SwitchPage page={nextPage} name={"Next Page"}/>
+        {allMovies.length > 0 && 
+          <>
+            <SwitchPage page={previusPage} name={"Previus Page"}/>
+            <p style={{fontSize: "20px", margin: "0", fontWeight: "500"}}>Page: {page}</p>
+            <SwitchPage page={nextPage} name={"Next Page"}/>
+          </>
+        }
       </div>
       
       <div className='center'>
-        {noResults ? <div style={{color: "red"}}>No Results Found</div> : <div className='discover-grids'>
+        {allMovies.length === 0 && 
+          <div style={{color: "red"}}>No Results Found</div>
+        }
+        <div className='discover-grids'>
           {allMovies.length > 0 && 
             allMovies.map(movie => 
             <Movie 
@@ -84,8 +80,9 @@ export default function DiscoverPage() {
               imageSize={"w185"}
               imagePath={movie.poster_path}
             />)
-          }</div>
-        }      
+          }
+        </div>
+              
           
       </div>
       </div>

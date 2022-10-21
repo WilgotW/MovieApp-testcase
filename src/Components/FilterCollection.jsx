@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FilterButton from './Interactive/FilterButton';
 
-export default function FilterCollection({setActiveFilter}) {
+export default function FilterCollection({setActiveFilter, searchTerm}) {
     const [genres, setGenres] = useState([
       {name: "Action", id: 1, active: false},
       {name: "Science fiction", id: 2, active: false },
@@ -21,6 +21,18 @@ export default function FilterCollection({setActiveFilter}) {
       newGenres[genreId-1].active = true;
       setGenres([...newGenres]);
     }
+    const resetActiveGenres = () => {
+      setActiveFilter("");
+      const newGenres = [...genres];
+      for (let i = 0; i < newGenres.length; i++) {
+        newGenres[i].active = false;
+      }
+      setGenres([...newGenres]);
+    }
+    useEffect(() => {
+      searchTerm !== "" && resetActiveGenres()
+    }, [searchTerm])
+
   return (
     <div style={{display: "flex", justifyContent: "left", gap: "20px", marginBottom: "100px"}}>
       {genres.map(genre => <FilterButton key={genre.id} genre={genre} setFilter={setFilter}/>)}

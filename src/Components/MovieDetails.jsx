@@ -8,7 +8,7 @@ import generateImage from './generateImage';
 import PersonProfile from './PersonProfile';
 
 export default function MovieDetails() {
-  const { movieId } = useParams()
+  const { movieId } = useParams();
   
   const [externalId, setExternialId] = useState("");
   const [movie, setMovie] = useState([]);
@@ -32,8 +32,7 @@ export default function MovieDetails() {
   }, [externalId])
 
   useEffect(() => {
-    setMoviePoster(generateImage("https://image.tmdb.org/t/p/", "h632", movie.poster_path));
-    console.log(movie)
+    movie.poster_path !== undefined && setMoviePoster(generateImage("https://image.tmdb.org/t/p/", "h632", movie.poster_path));
   }, [movie])
   
   return (
@@ -63,7 +62,7 @@ export default function MovieDetails() {
                 overflowX: "auto",
                 gap: "20px"
               }}>
-                {cast.map(person => <PersonProfile person={person} />)}
+                {cast.map(person => <PersonProfile key={person.id} person={person} />)}
               </div>
             }
           </div>

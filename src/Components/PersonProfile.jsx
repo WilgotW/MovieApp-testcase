@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import generateImage from './generateImage';
 
 export default function PersonProfile({person}) {
-    const profile = generateImage("https://image.tmdb.org/t/p/", "w185", person.profile_path);
+    if(person.poster_path !== null){
+        var profile = generateImage("https://image.tmdb.org/t/p/", "w185/", person.profile_path);
+    }  
     const [isHovering, setIsHovering] = useState(false);
   return (
     <div>
@@ -25,7 +27,9 @@ export default function PersonProfile({person}) {
                     transform: "translate(-50%, -50%)"
                 }}>{person.name} <br /> played as: {person.character} </div>
             }
-            <img className='cast-profile' src={profile} alt="" />
+            {person.profile_path !== undefined &&
+                <img className='cast-profile' src={profile} alt="" />
+            }
         </div>  
         {/* <div style={{
             position: 'relative',
