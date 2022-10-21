@@ -37,7 +37,7 @@ export default function HomePage() {
       </div>
       <h1 style={{width: "fit-content"}}>Top Rated</h1>
       <div>
-        {ratedMovies.length > 0 &&
+        {ratedMovies !== [] &&
           <TopRated ratedMovies={ratedMovies} imageConfig={imageConfig} />
         }
       </div>

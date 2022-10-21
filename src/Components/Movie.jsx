@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import generateImage from './generateImage'
 
 export default function Movie({ movie, imageSize, imagePath }) {
-  // useParams
   const moviePoster = generateImage("https://image.tmdb.org/t/p/", imageSize, imagePath);
   const [isHovering, setIsHovering] = useState(false);
   const navigate = useNavigate();
