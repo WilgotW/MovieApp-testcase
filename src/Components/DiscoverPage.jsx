@@ -15,13 +15,14 @@ export default function DiscoverPage() {
   const [imageConfig, setImageConfig] = useState([]);
   const [activeFilter, setActiveFilter] = useState("");
   const [genreIds, setGenreIds] = useState([]);
+  const [activeRating, setActiveRating] = useState(0);
 
   async function getMovies(){
     setActiveFilter("")
-    searchTerm !== "" && setAllMovies(await getSearchedMovies(searchTerm, page));
+    searchTerm !== "" && setAllMovies(await getSearchedMovies(searchTerm, page, activeRating));
   }
   async function filteredMovies(){
-    setAllMovies(await getFilteredMovies(activeFilter, genreIds, page));
+    setAllMovies(await getFilteredMovies(activeFilter, genreIds, page, activeRating));
   }
   useEffect(() => {
     allMovies.length > 0 && activeFilter == "" ? getMovies() : filteredMovies()
@@ -43,6 +44,13 @@ export default function DiscoverPage() {
     }
   }, [activeFilter])
  
+  useEffect(() => {
+    if(activeFilter !== ""){
+      filteredMovies()
+    }else if(searchTerm !== ""){
+      getMovies()
+    }
+  }, [activeRating])
   //switch page:
   const nextPage = () => setPage(prev => prev + 1)
   const previusPage = () => page > 1 && setPage(prev => prev - 1);
@@ -57,8 +65,14 @@ export default function DiscoverPage() {
           <FilterCollection setActiveFilter={setActiveFilter} searchTerm={searchTerm}/>
         </div>
       </div>
+      <div style={{width: "100%"}}>
+        <div style={{float: "left"}}>
+          <p>Minimun rating: {activeRating}</p>
+          <input type="range" min="0" max="10" value={activeRating} onChange={ev => setActiveRating(ev.target.value)} />
+        </div>
+      </div>
       <div style={{width: "100%",display: "flex", justifyContent: "space-between", height: "50px"}}>
-        {allMovies.length > 0 && 
+        {allMovies.length >= 20 && 
           <>
             <SwitchPage page={previusPage} name={"Previus Page"}/>
             <p style={{fontSize: "20px", margin: "0", fontWeight: "500"}}>Page: {page}</p>

@@ -16,6 +16,8 @@ export default function MovieDetails() {
   const [cast, setCast] = useState([]);
   const [videos, setVideos] = useState("");
 
+  const releaseYear = movie?.release_date ? movie.release_date.slice(0, 4) : "Not found";
+
   useEffect(() => {
     async function getExternial(){
       setExternialId(await getExternialId(movieId));
@@ -46,6 +48,7 @@ export default function MovieDetails() {
           <div style={{width: "500px", textAlign: "center", padding: "20px"}}>
             <div style={{width: "80%"}}>
               <h1>{movie.title !== undefined ? movie.title : movie.name}</h1>
+              <h3>Release date: {releaseYear}</h3>
               <h4 style={{margin: "0"}}>Overview:</h4>
               <p style={{margin: "0"}}>{movie.overview}</p>
             </div>
