@@ -11,11 +11,13 @@ function App() {
       <div className="App">
         
           <Navbar/>
+        <div>
           <Routes>
             <Route exact path='/' element={<HomePage/>} />
             <Route path='/discover' element={<DiscoverPage/>}/>
             <Route path="/movies/:movieId" element={<MovieDetails />}/>
           </Routes>
+        </div>
         
       </div>
     </Router>

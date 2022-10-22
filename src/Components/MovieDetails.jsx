@@ -43,7 +43,16 @@ export default function MovieDetails() {
   const prevVideo = () => activeVideoIndex > 0 && setActiveVideoIndex(prev => prev - 1);
   
   return (
-  <div key={movieId}className='scrollbar-hidden' style={{display: "flex", paddingLeft: "200px", paddingTop: "100px", paddingRight: "1000px" , flexDirection: "column", overflowY: "scroll", overflowX: "hidden"}}>
+  <div key={movieId}className='scrollbar-hidden' style={{
+      display: "flex", 
+      height: "90vh",
+      paddingLeft: "200px", 
+      paddingTop: "100px", 
+      paddingRight: "1000px", 
+      flexDirection: "column", 
+      overflowY: "scroll", 
+      overflowX: "hidden"}}>
+        
     {movie !== [] &&
       <>
         <div style={{

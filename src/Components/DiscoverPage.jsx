@@ -17,6 +17,23 @@ export default function DiscoverPage() {
   const [genreIds, setGenreIds] = useState([]);
   const [activeRating, setActiveRating] = useState(0);
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [activeMovieSize, setActiveMovieSize] = useState("w185");
+  const sizes = ['w92', 'w154', 'w185', 'w342', 'w500', 'w780', 'original'];
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth)
+    window.addEventListener("load", handleResize, false);
+    window.addEventListener("resize", handleResize, false);
+    checkSizes()
+  })
+  
+  function checkSizes(){
+    if(windowWidth < 800){
+      setActiveMovieSize(sizes[1]);
+    }
+  }
+
   async function getMovies(){
     setActiveFilter("")
     searchTerm !== "" && setAllMovies(await getSearchedMovies(searchTerm, page, activeRating));
@@ -63,7 +80,7 @@ export default function DiscoverPage() {
         <div style={{display: "flex", flexDirection: "column", justifyContent: "left"}}>
           <h1 style={{color: "white", width: "0"}}>Discover</h1>
           <div>
-            <FilterCollection setActiveFilter={setActiveFilter} searchTerm={searchTerm}/>
+            <FilterCollection setActiveFilter={setActiveFilter}/>
           </div>
         </div>
         <div style={{width: "100%"}}>
@@ -73,17 +90,24 @@ export default function DiscoverPage() {
           </div>
         </div>
         <div style={{width: "100%",display: "flex", justifyContent: "space-between", height: "50px"}}>
-          
-          {allMovies.length >= 20 && 
-            <>
-              <SwitchPage page={previusPage} name={"Previus Page"}/>
-              <p style={{fontSize: "20px", margin: "0", fontWeight: "500"}}>Page: {page}</p>
-              <SwitchPage page={nextPage} name={"Next Page"}/>
-            </>
-          }
+          <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+            <div style={{display: "flex", justifyContent: "space-between", width: "95%"}}>
+              {page !== 1 ?
+                <SwitchPage page={previusPage} name={"Previus Page"}/>
+                : <div style={{width: "30px", height: "30px"}}></div>
+              }
+              
+              {allMovies.length >= 20 ? 
+                <>
+                  <p style={{fontSize: "20px", margin: "0", fontWeight: "500"}}>Page: {page}</p>
+                  <SwitchPage page={nextPage} name={"Next Page"}/>
+                </>
+                : <div style={{width: "30px", height: "30px"}}></div>
+              } 
+            </div>
+          </div>
         </div>
-        
-        <div className='center'>
+        <div className='center' >
           {allMovies.length === 0 && 
             <div style={{color: "red"}}>No Results Found</div>
           }
@@ -93,17 +117,14 @@ export default function DiscoverPage() {
               <Movie 
                 key={movie.id} 
                 movie={movie} 
-                imageSize={"w185"}
+                imageSize={activeMovieSize}
                 imagePath={movie.poster_path}
               />)
             }
           </div>
-                
-            
         </div>
         </div>
       </div>
-      
     </div>
     
   )

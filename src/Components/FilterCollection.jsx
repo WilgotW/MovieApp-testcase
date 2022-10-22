@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import FilterButton from './Interactive/FilterButton';
 
-export default function FilterCollection({setActiveFilter, searchTerm}) {
+export default function FilterCollection({setActiveFilter}) {
     const [genres, setGenres] = useState([
       {name: "Action", id: 1, active: false},
       {name: "Science fiction", id: 2, active: false },
@@ -29,9 +29,9 @@ export default function FilterCollection({setActiveFilter, searchTerm}) {
       }
       setGenres([...newGenres]);
     }
-    useEffect(() => {
-      searchTerm !== "" && resetActiveGenres()
-    }, [searchTerm])
+    // useEffect(() => {
+    //   searchTerm !== "" && resetActiveGenres()
+    // }, [searchTerm])
 
   return (
     <div style={{display: "flex", justifyContent: "left", gap: "20px"}}>
