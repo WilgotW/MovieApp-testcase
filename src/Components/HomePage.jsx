@@ -24,24 +24,26 @@ export default function HomePage() {
   }, []);
  
   return (
-    <div style={{display: "flex", width: "fit-content", flexDirection: "column", paddingLeft: "50px"}}>
-      <h1 style={{width: "0"}}>Trending</h1>
-      <div style={{display: "flex", justifyContent: "center"}}>
-        {trendingMovies.length > 0 &&
-          <TrendingMovies trendingMovies={trendingMovies} imageConfig={imageConfig}/>
-        }
-      </div>
-      <h1 style={{width: "fit-content"}}>Now Playing</h1>
-      <div >
-        {nowMovies.length > 0 &&
-          <NowPlaying nowMovies={nowMovies} imageConfig={imageConfig} />
-        }
-      </div>
-      <h1 style={{width: "fit-content"}}>Top Rated</h1>
-      <div>
-        {ratedMovies !== [] &&
-          <TopRated ratedMovies={ratedMovies} imageConfig={imageConfig} />
-        }
+    <div style={{display: "flex", width: "fit-content", flexDirection: "column", paddingLeft: "50px", marginBottom: "500px", height: "100%"}}>
+      <div className='scrollbar-hidden' style={{overflowY: "scroll", overflowX: "hidden", boxSizing: "content-box"}}>
+        <h1 style={{width: "0"}}>Trending</h1>
+        <div style={{display: "flex", justifyContent: "center"}}>
+          {trendingMovies.length > 0 &&
+            <TrendingMovies trendingMovies={trendingMovies} imageConfig={imageConfig}/>
+          }
+        </div>
+        <h1 style={{width: "fit-content"}}>Now Playing</h1>
+        <div >
+          {nowMovies.length > 0 &&
+            <NowPlaying nowMovies={nowMovies} imageConfig={imageConfig} />
+          }
+        </div>
+        <h1 style={{width: "fit-content"}}>Top Rated</h1>
+        <div>
+          {ratedMovies !== [] &&
+            <TopRated ratedMovies={ratedMovies} imageConfig={imageConfig} />
+          }
+        </div>
       </div>
     </div>
   )

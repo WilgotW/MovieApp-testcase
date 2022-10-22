@@ -8,15 +8,15 @@ import MovieDetails from './Components/MovieDetails';
 function App() {
   return (
     <Router>
-      <div className="App" style={{display: "flex"}}>
-        <Navbar/>
-        <div>
+      <div className="App">
+        
+          <Navbar/>
           <Routes>
             <Route exact path='/' element={<HomePage/>} />
             <Route path='/discover' element={<DiscoverPage/>}/>
             <Route path="/movies/:movieId" element={<MovieDetails />}/>
           </Routes>
-        </div>
+        
       </div>
     </Router>
   );

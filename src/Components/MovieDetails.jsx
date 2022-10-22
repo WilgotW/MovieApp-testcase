@@ -43,7 +43,7 @@ export default function MovieDetails() {
   const prevVideo = () => activeVideoIndex > 0 && setActiveVideoIndex(prev => prev - 1);
   
   return (
-  <div key={movieId} style={{display: "flex", paddingLeft: "200px", paddingTop: "100px", flexDirection: "column"}}>
+  <div key={movieId}className='scrollbar-hidden' style={{display: "flex", paddingLeft: "200px", paddingTop: "100px", paddingRight: "1000px" , flexDirection: "column", overflowY: "scroll", overflowX: "hidden"}}>
     {movie !== [] &&
       <>
         <div style={{
@@ -59,6 +59,34 @@ export default function MovieDetails() {
             </div>
           </div>
         </div>
+        <div style={{marginTop: "50px"}}>
+          <h1 style={{ width: "0"}}>Videos</h1>
+          {videos !== "" ? 
+            <div >
+              <div style={{
+                position: "relative",
+                width: "100%",
+                paddingBottom: "56.25%",
+                height: "0"
+              }}>
+                <iframe style={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  width: "100%",
+                  height: "100%"
+                }} title='Youtube player' width="560" height="315" src={"https://youtube.com/embed/"+videos[activeVideoIndex]+"?autoplay=0"}></iframe>
+              </div>
+            </div>
+            : <p>No videos Aviable</p>
+          }
+          <div style={{display: "flex", justifyContent: "center", alignItems: "center", gap: "80px"}}>
+            <BsFillArrowLeftCircleFill className='icons' style={{fontSize: "60px"}} onClick={prevVideo}/>
+            <BsFillArrowRightCircleFill className='icons' style={{fontSize: "60px"}}onClick={nextVideo}/>
+          </div>
+        </div>
+        
+
         <div>
           <h1 style={{ width: "0"}}>Cast</h1>
           <div>
@@ -75,29 +103,7 @@ export default function MovieDetails() {
             }
           </div>
         </div>
-        {videos !== "" ? 
-          <div>
-            <div style={{
-              position: "relative",
-              width: "100%",
-              paddingBottom: "56.25%",
-              height: "0"
-            }}>
-              <iframe style={{
-                position: "absolute",
-                top: "0",
-                left: "0",
-                width: "100%",
-                height: "100%"
-              }} title='Youtube player' src={"https://youtube.com/embed/"+videos[activeVideoIndex]+"?autoplay=0"}></iframe>
-            </div>
-          </div>
-          : <p>No videos Aviable</p>
-        }
-        <div style={{display: "flex", justifyContent: "center", alignItems: "center", gap: "80px"}}>
-          <BsFillArrowLeftCircleFill className='icons' style={{fontSize: "60px"}} onClick={prevVideo}/>
-          <BsFillArrowRightCircleFill className='icons' style={{fontSize: "60px"}}onClick={nextVideo}/>
-        </div>
+        
         
       </>
     }
