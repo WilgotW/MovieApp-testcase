@@ -6,6 +6,7 @@ import getMovieByExternialId from '../ApiCalls/getMovieByExternialId';
 import getVideos from '../ApiCalls/getVideos';
 import generateImage from './generateImage';
 import PersonProfile from './PersonProfile';
+import {BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill} from 'react-icons/bs';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
@@ -14,7 +15,8 @@ export default function MovieDetails() {
   const [movie, setMovie] = useState([]);
   const [moviePoster, setMoviePoster] = useState("");
   const [cast, setCast] = useState([]);
-  const [videos, setVideos] = useState("");
+  const [videos, setVideos] = useState([]);
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
 
   const releaseYear = movie?.release_date ? movie.release_date.slice(0, 4) : "Not found";
 
@@ -36,6 +38,9 @@ export default function MovieDetails() {
   useEffect(() => {
     movie.poster_path !== undefined && setMoviePoster(generateImage("https://image.tmdb.org/t/p/", "h632", movie.poster_path));
   }, [movie])
+
+  const nextVideo = () => activeVideoIndex < 4 && setActiveVideoIndex(prev => prev + 1);
+  const prevVideo = () => activeVideoIndex > 0 && setActiveVideoIndex(prev => prev - 1);
   
   return (
   <div key={movieId} style={{display: "flex", paddingLeft: "200px", paddingTop: "100px", flexDirection: "column"}}>
@@ -70,27 +75,29 @@ export default function MovieDetails() {
             }
           </div>
         </div>
-        {/* <div style={{
-            height: "250px",
-            width: "350px",
-            border: "5px solid white",
-            boxShadow: "0 5px 15px rgba(0,0,0, 0.7)",
-            cursor: "pointer",
-            overflow: "hidden"
-        }}>
-          <iframe src='https://www.youtube.com/watch?v=XG_CimbpVMQ' className='video-player'/>
-        </div> */}
-        
-            {videos !== [] ?
-              <div className='video-container'>
-                <div className='video'>
-                  <iframe title='Youtube player' src={"https://youtube.com/embed/"+videos+"?autoplay=0"}>
-                  </iframe>
-                </div>
-              </div> 
-              : <p>No videos Aviable</p>
-            } 
-         
+        {videos !== "" ? 
+          <div>
+            <div style={{
+              position: "relative",
+              width: "100%",
+              paddingBottom: "56.25%",
+              height: "0"
+            }}>
+              <iframe style={{
+                position: "absolute",
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "100%"
+              }} title='Youtube player' src={"https://youtube.com/embed/"+videos[activeVideoIndex]+"?autoplay=0"}></iframe>
+            </div>
+          </div>
+          : <p>No videos Aviable</p>
+        }
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center", gap: "80px"}}>
+          <BsFillArrowLeftCircleFill className='icons' style={{fontSize: "60px"}} onClick={prevVideo}/>
+          <BsFillArrowRightCircleFill className='icons' style={{fontSize: "60px"}}onClick={nextVideo}/>
+        </div>
         
       </>
     }
