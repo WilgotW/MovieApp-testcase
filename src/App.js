@@ -9,9 +9,8 @@ import MovieDetails from './Components/MovieDetails';
 function App() {
   return (
     <Router>
-      <div className="App">
-        
-          <Navbar/>
+      <div className="App">  
+        <Navbar/>
         <div>
           <Routes>
             <Route exact path='/' element={<HomePage/>} />
@@ -19,7 +18,6 @@ function App() {
             <Route path="/movies/:movieId" element={<MovieDetails />}/>
           </Routes>
         </div>
-        
       </div>
     </Router>
   );

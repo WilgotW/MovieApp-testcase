@@ -20,23 +20,6 @@ export default function MovieDetails() {
 
   const releaseYear = movie?.release_date ? movie.release_date.slice(0, 4) : "Not found";
 
-  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  // const [activeMovieSize, setActiveMovieSize] = useState("h632");
-  // const sizes = ['w45', 'w185', 'h632', 'original'];
-
-  // useEffect(() => {
-  //   const handleResize = () => setWindowWidth(window.innerWidth)
-  //   window.addEventListener("load", handleResize, false);
-  //   window.addEventListener("resize", handleResize, false);
-  //   checkSizes()
-  // })
-  
-  // function checkSizes(){
-  //   if(windowWidth < 1170){
-  //     setActiveMovieSize(sizes[1])
-  //   }
-  // }
-
   useEffect(() => {
     async function getExternial(){
       setExternialId(await getExternialId(movieId));
@@ -103,8 +86,6 @@ export default function MovieDetails() {
             <BsFillArrowRightCircleFill className='icons' style={{fontSize: "60px"}}onClick={nextVideo}/>
           </div>
         </div>
-        
-
         <div>
           <h1 style={{ width: "0"}}>Cast</h1>
           <div>
@@ -115,8 +96,6 @@ export default function MovieDetails() {
             }
           </div>
         </div>
-        
-        
       </>
     }
   </div>

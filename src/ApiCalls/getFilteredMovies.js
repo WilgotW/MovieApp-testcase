@@ -1,7 +1,7 @@
 export default async function getFilteredMovies(genreName, genreIds, page, minRating) {
     const id = genreIds.genres.map(genre => {  
         if(genre.name == genreName){
-            console.log(genre.name + " has the id: " + genre.id + " and ")
+            console.log(genre.name + " has the id: " + genre.id)
             return genre.id;
         }
     });

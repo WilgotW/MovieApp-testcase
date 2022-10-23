@@ -73,6 +73,7 @@ export default function DiscoverPage() {
       getMovies()
     }
   }, [activeRating])
+  
   //switch page:
   const nextPage = () => setPage(prev => prev + 1)
   const previusPage = () => page > 1 && setPage(prev => prev - 1);

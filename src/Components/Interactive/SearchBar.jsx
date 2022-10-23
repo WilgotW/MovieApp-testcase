@@ -21,7 +21,6 @@ export default function SearchBar({searchTerm, setSearchTerm, searchMovies}) {
         <div style={{position: "absolute", width: "95%", alignItems: "center", display: "flex", justifyContent: "right", height: "0"}}>
           <AiOutlineSearch className='icons' onClick={handleSearch} style={{fontSize: "25px", color: "black"}}/>
         </div>
-        
       </form>
     </div>
   )

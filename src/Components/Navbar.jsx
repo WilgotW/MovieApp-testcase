@@ -33,8 +33,6 @@ export default function Navbar() {
       }
       {showMenu &&
           <div className={mobile ? "navbar-mobile" : "navbar"}>
-          
-          
           <>
             <h1 style={{margin: "0"}}>Movies</h1>
             <div style={{height: "100%", display: "flex", alignItems:"center"}}>
@@ -49,12 +47,9 @@ export default function Navbar() {
                 </div>
               </div>
             </div>
-          </>
-          
-          
+          </>  
         </div>
       }
-      
     </div>
     
   )

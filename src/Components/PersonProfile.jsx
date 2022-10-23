@@ -31,22 +31,6 @@ export default function PersonProfile({person}) {
                 <img className='cast-profile' src={profile} alt="" />
             }
         </div>  
-        {/* <div style={{
-            position: 'relative',
-            minHeight: "100vh",
-            background: "gray"
-        }}>
-            <div style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "15px",
-                justifyContent: "center",
-                padding: "10px"
-            }}>
-
-            </div>
-        </div> */}
-        
     </div>
   )
 }
