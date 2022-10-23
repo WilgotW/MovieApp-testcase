@@ -114,7 +114,7 @@ export default function DiscoverPage() {
           {allMovies.length === 0 && 
             <div style={{color: "red"}}>No Results Found</div>
           }
-          <div className='discover-grids'>
+          <div className='movie-grid'>
             {allMovies.length > 0 && 
               allMovies.map(movie => 
               <Movie 

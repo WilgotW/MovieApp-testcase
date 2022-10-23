@@ -1,16 +1,16 @@
 import React from 'react'
 import Movie from './Movie'
 
-export default function TrendingMovies({trendingMovies, imageConfig }) {
+export default function TrendingMovies({trendingMovies, imageConfig, imageSize }) {
   return (
-    <div style={{display: "flex", gap: "20px"}}>
+    <div className='trending-movies'>
       {trendingMovies.length > 0 &&
         <>
-          <div>
-            <Movie movie={trendingMovies[0]} imageConfig={imageConfig} imagePath={trendingMovies[0].backdrop_path} imageSize={"w780"}/>
+          <div style={{width: "fit-content"}}>
+            <Movie movie={trendingMovies[0]} imageConfig={imageConfig} imagePath={trendingMovies[0].backdrop_path} imageSize={imageSize}/>
           </div>
-          <div>
-            <Movie movie={trendingMovies[1]} imageConfig={imageConfig} imagePath={trendingMovies[1].backdrop_path} imageSize={"w780"}/>
+          <div style={{width: "fit-content"}}>
+            <Movie movie={trendingMovies[1]} imageConfig={imageConfig} imagePath={trendingMovies[1].backdrop_path} imageSize={imageSize}/>
           </div>
         </>
       }

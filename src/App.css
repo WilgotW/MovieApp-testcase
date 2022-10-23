@@ -53,7 +53,13 @@ a{
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
-.discover-grids{
+.trending-movies{
+  padding: 0px;
+  display: flex;
+  justify-content: left;
+  gap: 20px;
+}
+.movie-grid{
   width: fit-content;
   gap: 1rem;
   display: grid;
