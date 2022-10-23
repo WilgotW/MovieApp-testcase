@@ -20,6 +20,23 @@ export default function MovieDetails() {
 
   const releaseYear = movie?.release_date ? movie.release_date.slice(0, 4) : "Not found";
 
+  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  // const [activeMovieSize, setActiveMovieSize] = useState("h632");
+  // const sizes = ['w45', 'w185', 'h632', 'original'];
+
+  // useEffect(() => {
+  //   const handleResize = () => setWindowWidth(window.innerWidth)
+  //   window.addEventListener("load", handleResize, false);
+  //   window.addEventListener("resize", handleResize, false);
+  //   checkSizes()
+  // })
+  
+  // function checkSizes(){
+  //   if(windowWidth < 1170){
+  //     setActiveMovieSize(sizes[1])
+  //   }
+  // }
+
   useEffect(() => {
     async function getExternial(){
       setExternialId(await getExternialId(movieId));
@@ -43,23 +60,15 @@ export default function MovieDetails() {
   const prevVideo = () => activeVideoIndex > 0 && setActiveVideoIndex(prev => prev - 1);
   
   return (
-  <div key={movieId}className='scrollbar-hidden' style={{
-      display: "flex", 
-      height: "90vh",
-      paddingLeft: "200px", 
-      paddingTop: "100px", 
-      paddingRight: "1000px", 
-      flexDirection: "column", 
-      overflowY: "scroll", 
-      overflowX: "hidden"}}>
+  <div key={movieId}className='scrollbar-hidden movie-detail'>
         
     {movie !== [] &&
       <>
-        <div style={{
-          display: "flex"
-        }}>
-          <img src={moviePoster} alt="" />
-          <div style={{width: "500px", textAlign: "center", padding: "20px"}}>
+        <div className='top-movie-details'>
+          <div style={{width: "fit-content"}}>
+            <img src={moviePoster} alt="" />
+          </div>
+          <div className='movie-description'>
             <div style={{width: "80%"}}>
               <h1>{movie.title !== undefined ? movie.title : movie.name}</h1>
               <h3>Release date: {releaseYear}</h3>
@@ -68,7 +77,7 @@ export default function MovieDetails() {
             </div>
           </div>
         </div>
-        <div style={{marginTop: "50px"}}>
+        <div className='movie-video-collection'>
           <h1 style={{ width: "0"}}>Videos</h1>
           {videos !== "" ? 
             <div >
@@ -100,13 +109,7 @@ export default function MovieDetails() {
           <h1 style={{ width: "0"}}>Cast</h1>
           <div>
             {cast.length > 0 &&
-              <div style={{
-                height: "fit-content",
-                width: "1000px",
-                display: "flex",
-                overflowX: "auto",
-                gap: "20px"
-              }}>
+              <div className='cast-collection'>
                 {cast.map(person => <PersonProfile key={person.id} person={person} />)}
               </div>
             }

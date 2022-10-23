@@ -11,7 +11,8 @@ export default function Movie({ movie, imageSize, imagePath }) {
 
   return (
     <div onClick={() => {navigateToDetails()}}style={{ 
-      background: imagePath == undefined && "orange", textAlign: "center" 
+      background: imagePath == undefined && "orange", 
+      textAlign: "center"
     }}onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
       <div style={{
         position: "relative",

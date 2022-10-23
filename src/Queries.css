@@ -1,18 +1,39 @@
-@media screen and (max-width: 1890px){
+@media screen and (min-width: 2070px){
     .movie-grid{
-        grid-template-columns: repeat(7, 1fr);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .top-movie-details{
+        width: 50vw;
+        justify-content: left;
+    }
+    .movie-video-collection{
+        width: 50vw;
+    }
+    .cast-collection{
+        width: 50vw;
     }
 }
 
+/* @media screen and (max-width: 1990px){
+    .movie-grid{
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+} */
 @media screen and (max-width: 1690px){
     .movie-grid{
         grid-template-columns: repeat(6, 1fr);
     }
+    
 }
 
 @media screen and (max-width: 1490px){
     .movie-grid{
         grid-template-columns: repeat(5, 1fr);
+    }
+    .cast-collection{
+        width: 900px;
     }
 }
 
@@ -26,6 +47,12 @@
     .trending-movies{
         flex-direction: column;
     }
+    .movie-detail{
+        padding-left: 100px; 
+    }
+    .cast-collection{
+        width: 780px;
+    }
 }
 
 @media screen and (max-width: 1190px){
@@ -35,7 +62,24 @@
     .filter-button-collection{
         grid-template-columns: repeat(5, 1fr);
     }
+    .top-movie-details{
+        flex-direction: column;
+        width: fit-content;
+    }
+    .cast-collection{
+        width: 700px;
+    }
+    
 }
+@media screen and (max-width: 1040px){
+    .movie-video-collection{
+        width: 550px;
+    }
+    .cast-collection{
+        width: 600px;
+    }
+}
+
 
 @media screen and (max-width: 950px){
     .movie-grid{
@@ -44,6 +88,12 @@
     .filter-button-collection{
         grid-template-columns: repeat(4, 1fr);
     }
+    .movie-detail{
+        padding-left: 25px; 
+    }
+    .cast-collection{
+        width: 550px;
+    }
 }
 @media screen and (max-width: 800px){
     .movie-grid{
@@ -51,5 +101,21 @@
     }
     .filter-button-collection{
         grid-template-columns: repeat(3, 1fr);
+    }
+    .cast-collection{
+        width: 450px;
+    }
+    .movie-video-collection{
+        width: 450px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    
+    .movie-video-collection{
+        width: 370px;
+    }
+    .cast-collection{
+        width: 370px;
     }
 }

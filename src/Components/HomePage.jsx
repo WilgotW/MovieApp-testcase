@@ -27,18 +27,16 @@ export default function HomePage() {
   })
   
   function checkSizes(){
-    if(windowWidth > 1870){
+    if(windowWidth > 1900){
       setActiveTrendingMovieSize(trendingSizes[5]);
-    }
-    if(windowWidth < 1870){
+    }else if(windowWidth < 1900){
       setActiveTrendingMovieSize(trendingSizes[4]);
     }
-    
-    if(windowWidth > 800){
+    if(windowWidth > 2100){
+      setActiveMovieSize(sizes[3]);
+    }else if(windowWidth > 800){
       setActiveMovieSize(sizes[2]);
-      
-    }
-    if(windowWidth < 800){
+    }else if(windowWidth < 800){
       setActiveMovieSize(sizes[3]);
       setActiveTrendingMovieSize(trendingSizes[3])
     }
@@ -55,8 +53,8 @@ export default function HomePage() {
   }, []);
  
   return (
-    <div style={{display: "flex", width: "fit-content", flexDirection: "column", paddingLeft: "50px", marginBottom: "500px", height: "100%"}}>
-      <div className='scrollbar-hidden' style={{overflowY: "scroll", overflowX: "hidden", boxSizing: "content-box"}}>
+    <div style={{display: "flex", width: "fit-content", flexDirection: "column", paddingLeft: "50px", marginBottom: "500px", height: "100%", width: "100%"}}>
+      <div className='scrollbar-hidden' style={{overflowY: "scroll", overflowX: "hidden", boxSizing: "content-box", width: "100%"}}>
         <h1 style={{width: "0"}}>Trending</h1>
         <div>
           {trendingMovies.length > 0 &&

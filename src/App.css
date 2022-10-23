@@ -53,11 +53,42 @@ a{
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
+.cast-collection{
+  height: fit-content;
+  width: 1000px;
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+}
+.top-movie-details{
+  margin: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.movie-detail{
+  display: flex; 
+  height: 90vh;
+  padding-left: 200px; 
+  padding-top: 100px; 
+  padding-right: 1000px; 
+  flex-direction: column; 
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 .trending-movies{
   padding: 0px;
   display: flex;
   justify-content: left;
   gap: 20px;
+}
+.movie-description{
+  width: 500px;
+  padding: 20px;
+}
+.movie-video-collection{
+  margin-top: 50px;
+  width: 700px;
 }
 .movie-grid{
   width: fit-content;

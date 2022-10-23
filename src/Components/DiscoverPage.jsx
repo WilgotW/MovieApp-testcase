@@ -29,7 +29,9 @@ export default function DiscoverPage() {
   })
   
   function checkSizes(){
-    if(windowWidth > 800){
+    if(windowWidth > 2070){
+      setActiveMovieSize(sizes[3]);
+    }else if(windowWidth > 800){
       setActiveMovieSize(sizes[2]);
     }
     if(windowWidth < 800){
