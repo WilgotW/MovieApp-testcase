@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/WilgotW/MovieApp-testcase/static/css/main.93f9d7ba.css",
+    "main.js": "/WilgotW/MovieApp-testcase/static/js/main.8e593a7f.js",
+    "index.html": "/WilgotW/MovieApp-testcase/index.html",
+    "main.93f9d7ba.css.map": "/WilgotW/MovieApp-testcase/static/css/main.93f9d7ba.css.map",
+    "main.8e593a7f.js.map": "/WilgotW/MovieApp-testcase/static/js/main.8e593a7f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.93f9d7ba.css",
+    "static/js/main.8e593a7f.js"
+  ]
+}
