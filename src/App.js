@@ -1,4 +1,5 @@
 import './App.css';
+import './Queries.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import DiscoverPage from './Components/DiscoverPage';
 import HomePage from './Components/HomePage';

@@ -1,0 +1,52 @@
+@media screen and (max-width: 1890px){
+    .discover-grids{
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
+
+@media screen and (max-width: 1690px){
+    .discover-grids{
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media screen and (max-width: 1490px){
+    .discover-grids{
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media screen and (max-width: 1290px){
+    .discover-grids{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .filter-button-collection{
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media screen and (max-width: 1190px){
+    .discover-grids{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .filter-button-collection{
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media screen and (max-width: 950px){
+    .discover-grids{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .filter-button-collection{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media screen and (max-width: 800px){
+    .discover-grids{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .filter-button-collection{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

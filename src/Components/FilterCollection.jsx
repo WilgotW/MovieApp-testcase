@@ -34,7 +34,7 @@ export default function FilterCollection({setActiveFilter}) {
     // }, [searchTerm])
 
   return (
-    <div style={{display: "flex", justifyContent: "left", gap: "20px"}}>
+    <div className='filter-button-collection' >
       {genres.map(genre => <FilterButton key={genre.id} genre={genre} setFilter={setFilter}/>)}
     </div>
   )
